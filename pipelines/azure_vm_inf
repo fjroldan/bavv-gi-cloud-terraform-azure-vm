@@ -1,0 +1,14 @@
+pipeline {
+	// Define the agent
+    agent { label 'production_agent' }
+    // Define the staging
+	stages {
+        
+		stage ("erraform init") {
+			steps {
+				sh ('terraform init')
+			}
+		}
+        
+	}
+}

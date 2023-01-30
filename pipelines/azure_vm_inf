@@ -10,7 +10,7 @@ pipeline {
                 sh "export ARM_CLIENT_SECRET='900a8b4b-f710-4a58-ab43-f52309d9996e'"
                 sh "export ARM_SUBSCRIPTION_ID='bcb520ca-0fe0-4eaa-9afc-da74b5c01bd7'"
                 sh "export ARM_TENANT_ID='1acfa458-2c17-44e5-b9d8-ff851b6c7c5f'"
-				sh ('terraform init -upgrade')
+				sh ('terraform init')
 			}
 		}
         stage ("Terraform validate") {

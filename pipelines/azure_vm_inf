@@ -32,12 +32,12 @@ pipeline {
 		}
         stage ("Terraform plan") {
 			steps {
-				sh ('terraform plan -var-file ${params.PARAMETER_FILE}')
+				sh ("terraform plan -var-file ${params.PARAMETER_FILE}")
 			}
 		}
         stage ("Terraform apply") {
 			steps {
-				sh ('terraform apply -var-file ${params.PARAMETER_FILE} -auto-approve')
+				sh ("terraform apply -var-file ${params.PARAMETER_FILE} -auto-approve")
 			}
 		}
 	}

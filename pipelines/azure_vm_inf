@@ -4,11 +4,25 @@ pipeline {
     // Define the staging
 	stages {
         
-		stage ("erraform init") {
+		stage ("Terraform init") {
 			steps {
 				sh ('terraform init')
 			}
 		}
-        
+        stage ("Terraform validate") {
+			steps {
+				sh ('terraform validate')
+			}
+		}
+        stage ("Terraform plan") {
+			steps {
+				sh ('terraform plan -var-file example.auto.tfvars.json')
+			}
+		}
+        stage ("Terraform apply") {
+			steps {
+				sh ('terraform apply -var-file example.auto.tfvars.json')
+			}
+		}
 	}
 }

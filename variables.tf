@@ -79,23 +79,55 @@ variable "network_interface_security_group_association_pool" {
 variable "virtual_machine_pool" {
   description = "Virtual machine"
   type = list(object({
-    name                = string
-    resource_group_name = string
-    location            = string
-    size                = string
-    admin_username      = string
+    name                         = string
+    resource_group_name          = string
+    location                     = string
+    size                         = string
+    admin_username               = string
 
-    network_interface_name_list = list(string)
+    network_interface_name_list  = list(string)
 
-    ssh_username        = string
-    ssh_public_key_path = string
+    ssh_username                 = string
+    ssh_public_key_path          = string
 
     os_disk_caching              = string
     os_disk_storage_account_type = string
 
-    image_publisher = string
-    image_offer     = string
-    image_sku       = string
-    image_version   = string
+    image_publisher              = string
+    image_offer                  = string
+    image_sku                    = string
+    image_version                = string
+  }))
+}
+
+variable "red_hat_virtual_machine_pool" {
+  description = "Red hat virtual machine"
+  type = list(object({
+
+    packer_resource_group_name   = string
+    packer_image_name            = string
+    name                         = string
+    location                     = string
+    rg_name                      = string
+    #upgrade_policy_mode          = string
+    #sku_name                     = string
+    #sku_tier                     = string
+    #sku_capacity                 = string
+    #os_computer_name_prefix      = string
+    #os_admin_user                = string
+    #os_admin_password            = string
+    network_interface_ids        = list(string)
+    ssh_username                 = string
+    ssh_public_key               = string
+    os_disk_caching              = string
+    os_disk_storage_account_type = string
+    #np_name                      = string
+    #np_primary                   = string
+    #np_ip_name                   = string
+    #np_ip_subnet_id              = string
+    #np_ip_primary                = string
+
+    sod_name                      = string
+    sod_create_option             = string
   }))
 }

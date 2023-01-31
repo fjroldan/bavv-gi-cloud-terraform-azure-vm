@@ -119,24 +119,32 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
 }
 
-module "vm_red_hat" {
-  source                                  = "./addon/module-red-hat"
-  for_each                                = local.red_hat_pool
-  vm_red_hat_packer_resource_group_name   = each.value.packer_resource_group_name
-  vm_red_hat_packer_image_name            = each.value.packer_image_name
-  vm_red_hat_name                         = each.value.name
-  vm_red_hat_location                     = each.value.location
-  vm_red_hat_rg_name                      = each.value.rg_name
-  vm_red_hat_upgrade_policy_mode          = each.value.upgrade_policy_mode
-  vm_red_hat_sku_name                     = each.value.sku_name
-  vm_red_hat_sku_tier                     = each.value.sku_tier
-  vm_red_hat_sku_capacity                 = each.value.sku_capacity
-  vm_red_hat_os_computer_name_prefix      = each.value.computer_name_prefix
-  vm_red_hat_os_admin_user                = each.value.admin_user
-  vm_red_hat_os_admin_password            = each.value.admin_password
-  vm_red_hat_network_interface_ids        = [for name in each.value.network_interface_name_list : azurerm_network_interface.neti[name].id]
-  vm_red_hat_ssh_username                 = each.value.ssh_username
-  vm_red_hat_ssh_public_key               = file(each.value.ssh_public_key)
-  vm_red_hat_os_disk_caching              = each.value.os_disk_caching
-  vm_red_hat_os_disk_storage_account_type = each.value.os_disk_storage_account_type
-}
+//module "vm_red_hat" {
+//  source                                  = "./addon/module-red-hat"
+//  for_each                                = local.red_hat_pool
+//  vm_red_hat_packer_resource_group_name   = each.value.packer_resource_group_name
+//  vm_red_hat_packer_image_name            = each.value.packer_image_name
+//  vm_red_hat_name                         = each.value.name
+//  vm_red_hat_location                     = each.value.location
+//  vm_red_hat_rg_name                      = each.value.rg_name
+  #vm_red_hat_upgrade_policy_mode          = each.value.upgrade_policy_mode
+  #vm_red_hat_sku_name                     = each.value.sku_name
+  #vm_red_hat_sku_tier                     = each.value.sku_tier
+  #vm_red_hat_sku_capacity                 = each.value.sku_capacity
+  #vm_red_hat_os_computer_name_prefix      = each.value.computer_name_prefix
+  #vm_red_hat_os_admin_user                = each.value.admin_user
+  #vm_red_hat_os_admin_password            = each.value.admin_password
+//  vm_red_hat_network_interface_ids        = [for name in each.value.network_interface_name_list : azurerm_network_interface.neti[name].id]
+//  vm_red_hat_ssh_username                 = each.value.ssh_username
+//  vm_red_hat_ssh_public_key               = file(each.value.ssh_public_key)
+//  vm_red_hat_os_disk_caching              = each.value.os_disk_caching
+//  vm_red_hat_os_disk_storage_account_type = each.value.os_disk_storage_account_type
+  #vm_red_hat_np_name                      = each.value.np_name
+  #vm_red_hat_np_primary                   = each.value.np_primary
+  #vm_red_hat_np_ip_name                   = each.value.np_ip_name
+  #vm_red_hat_np_ip_subnet_id              = each.value.np_ip_subnet_id
+  #vm_red_hat_np_ip_primary                = each.value.np_ip_primary
+
+//  vm_red_hat_sod_name                      = each.value.sod_name
+//  vm_red_hat_sod_create_option             = each.value.sod_create_option
+//}

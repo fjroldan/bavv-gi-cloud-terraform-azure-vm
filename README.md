@@ -31,11 +31,11 @@ terraform fmt -recursive
 ```
 - Para generar un plan desde archivo de confuguración
 ```
-terraform plan -var-file pre.auto.tfvars.json -out main.tfplan
+terraform plan -var-file infrastructure/pre.auto.tfvars.json -out main.tfplan
 ```
 - Para aplicar un plan desde archivo de confuguración
 ```
-terraform apply main.tfplan -var-file pre.auto.tfvars.json -auto-approve 
+terraform apply main.tfplan -var-file infrastructure/pre.auto.tfvars.json -auto-approve 
 ```
 - Para actualizar el provider lib
 ```

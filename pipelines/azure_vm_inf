@@ -61,7 +61,7 @@ pipeline {
         // Define el terraform apply stage
         stage ("Terraform apply") {
 			steps {
-				sh ("terraform apply main.tfplan -var-file infrastructure/${params.CONFIG_FILE} -auto-approve")
+				sh ("terraform apply -var-file infrastructure/${params.CONFIG_FILE} -auto-approve")
 			}
 		}
 	}

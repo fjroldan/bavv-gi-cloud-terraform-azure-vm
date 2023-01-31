@@ -11,11 +11,6 @@
 // @date 31/01/23
 //
 
-variable "nsg_name" {
-    description = "Red Hat virtual machine "
-    type = string
-}
-
 variable "vm_red_hat_packer_resource_group_name" {
     description = "Red Hat virtual machine "
     type = string
@@ -61,17 +56,17 @@ variable "vm_red_hat_sku_capacity" {
     type = string
 }
 
-variable "vm_red_hat_computer_name_prefix" {
+variable "vm_red_hat_os_computer_name_prefix" {
     description = "Red Hat virtual machine "
     type = string
 }
 
-variable "vm_red_hat_admin_user" {
+variable "vm_red_hat_os_admin_user" {
     description = "Red Hat virtual machine "
     type = string
 }
 
-variable "vm_red_hat_admin_password" {
+variable "vm_red_hat_os_admin_password" {
     description = "Red Hat virtual machine "
     type = string
 }
@@ -81,12 +76,12 @@ variable "vm_red_hat_network_interface_ids" {
     type = string
 }
 
-variable "vm_red_hat_username" {
+variable "vm_red_hat_ssh_username" {
     description = "Red Hat virtual machine "
     type = string
 }
 
-variable "vm_red_hat_public_key" {
+variable "vm_red_hat_ssh_public_key" {
     description = "Red Hat virtual machine "
     type = string
 }

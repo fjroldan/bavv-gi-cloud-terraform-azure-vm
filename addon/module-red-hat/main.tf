@@ -37,16 +37,16 @@ resource "azurerm_virtual_machine_scale_set" "vm_red_hat" {
   }
 
   os_profile {
-    computer_name_prefix = var.vm_red_hat_computer_name_prefix
-    admin_username       = var.vm_red_hat_admin_user
-    admin_password       = var.vm_red_hat_admin_password
+    computer_name_prefix = var.vm_red_hat_os_computer_name_prefix
+    admin_username       = var.vm_red_hat_os_admin_user
+    admin_password       = var.vm_red_hat_os_admin_password
   }
 
   network_interface_ids = var.vm_red_hat_network_interface_ids
 
   admin_ssh_key {
-    username   = var.vm_red_hat_username
-    public_key = var.vm_red_hat_public_key
+    username   = var.vm_red_hat_ssh_username
+    public_key = var.vm_red_hat_ssh_public_key
   }
 
   os_disk {

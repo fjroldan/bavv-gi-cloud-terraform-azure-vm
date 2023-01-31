@@ -30,8 +30,8 @@ pipeline {
                                 description: 'Ingrese el nombre del archivo de configuración (debe ser un json válido).',
                             ),
                             string(
-                                defaultValue: 'pre.auto.tfvars.json', 
-                                name: 'RELEASE_TAG', 
+                                defaultValue: 'release-31012023-1', 
+                                name: 'RELEASE_TAG',
                                 trim: true,
                                 description: 'Ingrese el release tag asociado archivo de configuración.',
                             ),

@@ -15,7 +15,7 @@ El componente dispone de la siguiente estructura:
     |-  module-public-ip: define ip publicas
     |-  module-red-hat: define una máquina virtual con sistema operativo RedHat
     |-  module-rg: define grupos de recursos
-    |- module-vnet: define redes virtuales
+    |-  module-vnet: define redes virtuales
     |-  module-windows: define una máquina virtual con sistema operativo Windows
 |- pipelines: Define los pipelines que exponen los servicios del módulo
 ```

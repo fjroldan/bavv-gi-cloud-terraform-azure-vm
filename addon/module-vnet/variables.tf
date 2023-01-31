@@ -1,3 +1,16 @@
+// 
+// ------------------------------------------------------------
+// - Todos los derechos reservados 2023                       -
+// - Banco AV Villas                                          -
+// - $ variables.tf terraform module script                   -
+// ------------------------------------------------------------
+// Componente que define las variables asociadas a red virtual
+// en azure
+// @autor Equipo IaC - Vass Latam
+// @version 0.0.1.0
+// @date 31/01/23
+//
+
 variable "vnet_name" {
     description = "Virtual network name"
     type = string

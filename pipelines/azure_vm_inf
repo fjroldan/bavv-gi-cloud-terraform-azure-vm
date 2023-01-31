@@ -1,43 +1,67 @@
+// 
+// ------------------------------------------------------------
+// - Todos los derechos reservados 2023                       -
+// - Banco AV Villas                                          -
+// - $ azure_vm_inf pipeline script                           -
+// ------------------------------------------------------------
+// Componente que define el pipeline de generacion de 
+// infrastructura en la nube de maneara virtualizada.
+// @autor Equipo IaC - Vass Latam
+// @version 0.0.1.0
+// @date 31/01/23
+// 
+
+// Define el pipeline
 pipeline {
-	// Define the agent
+	// Define el agente
     agent { label 'production_agent' }
-    // Define the staging
+    // Define los stages
 	stages {
-        
-        stage('Setup parameters') {
+        // Define el setup stage
+        stage('Setup') {
             steps {
                 script { 
                     properties([
                         parameters([
                             string(
                                 defaultValue: 'pre.auto.tfvars.json', 
-                                name: 'PARAMETER_FILE', 
-                                trim: true
-                            )
+                                name: 'CONFIG_FILE', 
+                                trim: true,
+                                description: 'Ingrese el nombre del archivo de configuración (debe ser un json válido).',
+                            ),
+                            string(
+                                defaultValue: 'pre.auto.tfvars.json', 
+                                name: 'RELEASE_TAG', 
+                                trim: true,
+                                description: 'Ingrese el release tag asociado archivo de configuración.',
+                            ),
                         ])
                     ])
                 }
             }
         }
-
+        // Define el terraform init stage
 		stage ("Terraform init") {
 			steps {
 				sh ('terraform init -upgrade')
 			}
 		}
+        // Define el terraform validate stage
         stage ("Terraform validate") {
 			steps {
 				sh ('terraform validate')
 			}
 		}
+        // Define el terraform plan stage
         stage ("Terraform plan") {
 			steps {
-				sh ("terraform plan -var-file ${params.PARAMETER_FILE}")
+				sh ("terraform plan -var-file ${params.CONFIG_FILE}")
 			}
 		}
+        // Define el terraform apply stage
         stage ("Terraform apply") {
 			steps {
-				sh ("terraform apply -var-file ${params.PARAMETER_FILE} -auto-approve")
+				sh ("terraform apply -var-file ${params.CONFIG_FILE} -auto-approve")
 			}
 		}
 	}

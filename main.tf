@@ -1,3 +1,18 @@
+//
+// ------------------------------------------------------------
+// - Todos los derechos reservados 2023                       -
+// - Banco AV Villas                                          -
+// - $ main.tf terraform module script                        -
+// ------------------------------------------------------------
+// Componente principal del modelo de generaliazcion. Define 
+// el modluo para implementacion de maquinas virtuales en 
+// azure. 
+// un grupo de segurida de red en azure
+// @autor Equipo IaC - Vass Latam
+// @version 0.0.1.0
+// @date 31/01/23
+//
+
 module "vm_rg" {
   source      = "./addon/module-rg"
   for_each     = local.rg_pool
@@ -46,10 +61,6 @@ module "vm_nsg" {
   nsg_secr_destination_port_range     = each.value.secr_destination_port_range
   nsg_secr_source_address_prefix      = each.value.secr_source_address_prefix
   nsg_secr_destination_address_prefix = each.value.secr_destination_address_prefix
-
-  depends_on = [
-    module.vm_rg
-  ]
 }
 
 resource "azurerm_subnet" "subnet" {
@@ -58,10 +69,6 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name  = each.value.resource_group_name
   virtual_network_name = each.value.virtual_network_name
   address_prefixes     = each.value.address_prefixes
-
-  depends_on = [
-    module.vm_rg
-  ]  
 }
 
 resource "azurerm_network_interface" "neti" {
@@ -76,10 +83,6 @@ resource "azurerm_network_interface" "neti" {
     private_ip_address_allocation = each.value.private_ip_address_allocation
     public_ip_address_id          = module.vm_public_ip[each.value.public_ip_address_name].id
   }
-
-  depends_on = [
-    azurerm_subnet.subnet
-  ]
 }
 
 resource "azurerm_network_interface_security_group_association" "association_nsg_neti" {
@@ -114,8 +117,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
     sku       = each.value.image_sku
     version   = each.value.image_version
   }
-
-  depends_on = [
-    azurerm_network_interface.neti
-  ]
 }

@@ -1,21 +1,15 @@
-//terraform {
-//  required_version = ">=0.12"
-
-//  required_providers {
-//    azurerm = {
-//      source  = "hashicorp/azurerm"
-//      version = "~>2.0"
-//    }
-//    random = {
-//      source  = "hashicorp/random"
-//      version = "~>3.0"
-//    }
-//    tls = {
-//      source  = "hashicorp/tls"
-//      version = "~>4.0"
-//    }
-//  }
-//}
+//
+// ------------------------------------------------------------
+// - Todos los derechos reservados 2023                       -
+// - Banco AV Villas                                          -
+// - $ main.tf terraform module script                        -
+// ------------------------------------------------------------
+// Componente que define el mecanismo de autenticacion y 
+// acceso a recursos
+// @autor Equipo IaC - Vass Latam
+// @version 0.0.1.0
+// @date 31/01/23
+//
 
 terraform {
   required_providers {

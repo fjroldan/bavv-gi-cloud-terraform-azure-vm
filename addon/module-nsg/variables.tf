@@ -1,3 +1,16 @@
+// 
+// ------------------------------------------------------------
+// - Todos los derechos reservados 2023                       -
+// - Banco AV Villas                                          -
+// - $ variables.tf terraform module script                   -
+// ------------------------------------------------------------
+// Componente que define las variables asociadas a  un grupo 
+// de segurida de red en azure
+// @autor Equipo IaC - Vass Latam
+// @version 0.0.1.0
+// @date 31/01/23
+//
+
 variable "nsg_name" {
     description = "Network security group name"
     type = string

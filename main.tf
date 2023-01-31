@@ -15,7 +15,7 @@
 
 module "vm_rg" {
   source      = "./addon/module-rg"
-  for_each     = local.rg_pool
+  for_each    = local.rg_pool
   rg_name     = each.value.name
   rg_location = each.value.location
 }
@@ -38,7 +38,7 @@ module "vm_public_ip" {
   for_each                      = local.pi_pool
   public_ip_name                = each.value.name
   public_ip_location            = each.value.location
-  public_ip_resource_group_name = each.value.resource_group_name 
+  public_ip_resource_group_name = each.value.resource_group_name
   public_ip_allocation_method   = each.value.allocation_method
 
   depends_on = [
@@ -51,7 +51,7 @@ module "vm_nsg" {
   for_each                            = local.nsg_pool
   nsg_name                            = each.value.name
   nsg_location                        = each.value.location
-  nsg_resource_group_name             = each.value.resource_group_name 
+  nsg_resource_group_name             = each.value.resource_group_name
   nsg_secr_name                       = each.value.secr_name
   nsg_secr_priority                   = each.value.secr_priority
   nsg_secr_direction                  = each.value.secr_direction
@@ -126,7 +126,7 @@ module "vm_red_hat" {
   vm_red_hat_packer_image_name            = each.value.packer_image_name
   vm_red_hat_name                         = each.value.name
   vm_red_hat_location                     = each.value.location
-  vm_red_hat_rg_name                      = each.value.rg_name 
+  vm_red_hat_rg_name                      = each.value.rg_name
   vm_red_hat_upgrade_policy_mode          = each.value.upgrade_policy_mode
   vm_red_hat_sku_name                     = each.value.sku_name
   vm_red_hat_sku_tier                     = each.value.sku_tier
@@ -136,7 +136,7 @@ module "vm_red_hat" {
   vm_red_hat_os_admin_password            = each.value.admin_password
   vm_red_hat_network_interface_ids        = [for name in each.value.network_interface_name_list : azurerm_network_interface.neti[name].id]
   vm_red_hat_ssh_username                 = each.value.ssh_username
-  vm_red_hat_ssh_public_key               = file(each.value.ssh_public_key) 
+  vm_red_hat_ssh_public_key               = file(each.value.ssh_public_key)
   vm_red_hat_os_disk_caching              = each.value.os_disk_caching
-  vm_red_hat_os_disk_storage_account_type = each.value.os_disk_storage_account_type 
+  vm_red_hat_os_disk_storage_account_type = each.value.os_disk_storage_account_type
 }

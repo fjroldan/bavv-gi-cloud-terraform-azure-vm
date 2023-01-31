@@ -12,7 +12,7 @@
 //
 
 data "azurerm_resource_group" "image" {
-  name                = var.vm_red_hat_packer_resource_group_name
+  name = var.vm_red_hat_packer_resource_group_name
 }
 
 data "azurerm_image" "image" {
@@ -33,7 +33,7 @@ resource "azurerm_virtual_machine_scale_set" "vm_red_hat" {
   }
 
   storage_profile_image_reference {
-    id=data.azurerm_image.image.id
+    id = data.azurerm_image.image.id
   }
 
   os_profile {

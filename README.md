@@ -21,10 +21,6 @@ El componente dispone de la siguiente estructura:
 ```
 
 ## Comandos
-- Para eliminar todos los recursos
-```
-terraform apply -destroy
-```
 - Para verificar el código
 ```
 terraform fmt -recursive
@@ -35,9 +31,13 @@ terraform plan -var-file infrastructure/pre.auto.tfvars.json -out main.tfplan
 ```
 - Para aplicar un plan desde archivo de confuguración
 ```
-terraform apply main.tfplan -var-file infrastructure/pre.auto.tfvars.json -auto-approve 
+terraform apply -var-file infrastructure/pre.auto.tfvars.json -auto-approve 
 ```
 - Para actualizar el provider lib
 ```
 terraform init -upgrade
+```
+- Para eliminar todos los recursos
+```
+terraform apply -destroy -var-file infrastructure/ws.auto.tfvars.json
 ```

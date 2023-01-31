@@ -43,7 +43,7 @@ pipeline {
         // Define el terraform validate stage
         stage ("Terraform exe") {
 			steps {
-				sh ('${params.CONFIG_FILE}')
+				sh ('${params.COMMAND}')
 			}
 		}
 	}

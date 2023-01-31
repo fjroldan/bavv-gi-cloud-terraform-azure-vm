@@ -118,3 +118,21 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = each.value.image_version
   }
 }
+
+module "vm_red_hat" {
+  source                              = "./addon/module-red-hat"
+  for_each                            = local.red_hat_pool
+  
+  nsg_name                            = each.value.name
+  nsg_location                        = each.value.location
+  nsg_resource_group_name             = each.value.resource_group_name 
+  nsg_secr_name                       = each.value.secr_name
+  nsg_secr_priority                   = each.value.secr_priority
+  nsg_secr_direction                  = each.value.secr_direction
+  nsg_secr_access                     = each.value.secr_access
+  nsg_secr_protocol                   = each.value.secr_protocol
+  nsg_secr_source_port_range          = each.value.secr_source_port_range
+  nsg_secr_destination_port_range     = each.value.secr_destination_port_range
+  nsg_secr_source_address_prefix      = each.value.secr_source_address_prefix
+  nsg_secr_destination_address_prefix = each.value.secr_destination_address_prefix
+}

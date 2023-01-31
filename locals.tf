@@ -20,4 +20,5 @@ locals {
   neti_pool = { for x in var.network_interface_pool: x.name => x }
   nisg_pool = { for x in var.network_interface_security_group_association_pool: x.name => x }
   vm_pool = { for x in var.virtual_machine_pool: x.name => x }
+  red_hat_pool = { for x in var.virtual_machine_pool: x.name => x }
 }

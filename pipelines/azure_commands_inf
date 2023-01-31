@@ -1,0 +1,50 @@
+// 
+// ------------------------------------------------------------
+// - Todos los derechos reservados 2023                       -
+// - Banco AV Villas                                          -
+// - $ azure_vm_inf pipeline script                           -
+// ------------------------------------------------------------
+// Componente que define el pipeline de generacion de 
+// infrastructura en la nube de maneara virtualizada.
+// @autor Equipo IaC - Vass Latam
+// @version 0.0.1.0
+// @date 31/01/23
+// 
+
+// Define el pipeline
+pipeline {
+	// Define el agente
+    agent { label 'production_agent' }
+    // Define los stages
+	stages {
+        // Define el setup stage
+        stage('Setup') {
+            steps {
+                script { 
+                    properties([
+                        parameters([
+                            string(
+                                defaultValue: 'terraform fmt -recursive', 
+                                name: 'COMMAND', 
+                                trim: true,
+                                description: 'Ingrese el comando a ejecutar.',
+                            )
+                        ])
+                    ])
+                }
+            }
+        }
+        // Define el terraform init stage
+		stage ("Terraform init") {
+			steps {
+				sh ('terraform init -upgrade')
+			}
+		}
+        // Define el terraform validate stage
+        stage ("Terraform exe") {
+			steps {
+				sh ('${params.CONFIG_FILE}')
+			}
+		}
+	}
+}

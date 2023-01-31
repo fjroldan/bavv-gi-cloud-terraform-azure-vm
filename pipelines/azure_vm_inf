@@ -55,13 +55,13 @@ pipeline {
         // Define el terraform plan stage
         stage ("Terraform plan") {
 			steps {
-				sh ("terraform plan -var-file ${params.CONFIG_FILE}")
+				sh ("terraform plan -var-file ${params.CONFIG_FILE} -out main.tfplan")
 			}
 		}
         // Define el terraform apply stage
         stage ("Terraform apply") {
 			steps {
-				sh ("terraform apply -var-file ${params.CONFIG_FILE} -auto-approve")
+				sh ("terraform apply main.tfplan -var-file ${params.CONFIG_FILE} -auto-approve")
 			}
 		}
 	}

@@ -125,16 +125,16 @@ module "vm_red_hat" {
   vm_red_hat_packer_resource_group_name   = each.value.packer_resource_group_name
   vm_red_hat_packer_image_name            = each.value.packer_image_name
   vm_red_hat_name                         = each.value.name
-  vm_red_hat_rg_name                      = each.value.rg_name
+  vm_red_hat_rg_name                      = each.value.resource_group_name
   vm_red_hat_location                     = each.value.location
   vm_red_hat_size                         = each.value.size
-  vm_red_hat_admin_username               = each.value.admin_username
-  
   vm_red_hat_network_interface_ids        = [for name in each.value.network_interface_name_list : azurerm_network_interface.neti[name].id]
-  
-  vm_red_hat_ssh_username                 = each.value.ssh_username
-  vm_red_hat_ssh_public_key               = file(each.value.ssh_public_key)
-  
+  vm_red_hat_os_disk_name                 = each.value.os_disk_name
   vm_red_hat_os_disk_caching              = each.value.os_disk_caching
-  vm_red_hat_os_disk_storage_account_type = each.value.os_disk_storage_account_type
+  vm_red_hat_os_disk_create_option        = each.value.os_disk_create_option
+  vm_red_hat_os_disk_managed_disk_type    = each.value.os_disk_managed_disk_type
+  vm_red_hat_os_profile_computer_name     = each.value.os_profile_computer_name
+  vm_red_hat_os_profile_admin_username    = each.value.os_profile_admin_username
+  vm_red_hat_os_profile_admin_password    = each.value.os_profile_admin_password
+  vm_red_hat_os_profile_disable_password  = each.value.os_profile_disable_password
 }

@@ -107,14 +107,18 @@ variable "red_hat_virtual_machine_pool" {
     packer_resource_group_name   = string
     packer_image_name            = string
     name                         = string
-    rg_name                      = string
+    resource_group_name          = string
     location                     = string
     size                         = string
-    admin_username               = string
-    network_interface_ids        = list(string)
-    ssh_username                 = string
-    ssh_public_key               = string
+    network_interface_name_list  = list(string)
+
+    os_disk_name                 = string
     os_disk_caching              = string
-    os_disk_storage_account_type = string
+    os_disk_create_option        = string
+    os_disk_managed_disk_type    = string
+    os_profile_computer_name     = string
+    os_profile_admin_username    = string
+    os_profile_admin_password    = string
+    os_profile_disable_password  = bool
   }))
 }

@@ -26,54 +26,29 @@ variable "vm_red_hat_name" {
   type        = string
 }
 
-variable "vm_red_hat_location" {
-  description = "Red Hat virtual machine "
-  type        = string
-}
-
 variable "vm_red_hat_rg_name" {
   description = "Red Hat virtual machine "
   type        = string
 }
 
-//variable "vm_red_hat_upgrade_policy_mode" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
+variable "vm_red_hat_location" {
+  description = "Red Hat virtual machine "
+  type        = string
+}
 
-//variable "vm_red_hat_sku_name" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
+variable "vm_red_hat_size" {
+  description = "Red Hat virtual machine "
+  type        = string
+}
 
-//variable "vm_red_hat_sku_tier" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
-
-//variable "vm_red_hat_sku_capacity" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
-
-//variable "vm_red_hat_os_computer_name_prefix" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
-
-//variable "vm_red_hat_os_admin_user" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
-
-//variable "vm_red_hat_os_admin_password" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
+variable "vm_red_hat_admin_username" {
+  description = "Red Hat virtual machine "
+  type        = string
+}
 
 variable "vm_red_hat_network_interface_ids" {
   description = "Red Hat virtual machine "
-  type        = string
+  type        = list
 }
 
 variable "vm_red_hat_ssh_username" {
@@ -95,39 +70,3 @@ variable "vm_red_hat_os_disk_storage_account_type" {
   description = "Red Hat virtual machine "
   type        = string
 }
-
-variable "vm_red_hat_sod_name" {
-  description = "Red Hat virtual machine "
-  type        = string
-}
-
-variable "vm_red_hat_sod_create_option" {
-  description = "Red Hat virtual machine "
-  type        = string
-}
-
-
-//variable "vm_red_hat_np_name" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
-
-//variable "vm_red_hat_np_primary" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
-
-//variable "vm_red_hat_np_ip_name" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
-
-//variable "vm_red_hat_np_ip_subnet_id" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}
-
-//variable "vm_red_hat_np_ip_primary" {
-//  description = "Red Hat virtual machine "
-//  type        = string
-//}

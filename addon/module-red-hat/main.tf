@@ -20,55 +20,30 @@ data "azurerm_image" "image" {
   resource_group_name = data.azurerm_resource_group.image.name
 }
 
-resource "azurerm_virtual_machine" "vm_red_hat" {
+resource "azurerm_linux_virtual_machine" "vm_red_hat" {
   name                = var.vm_red_hat_name
-  location            = var.vm_red_hat_location
   resource_group_name = var.vm_red_hat_rg_name
-  #upgrade_policy_mode = var.vm_red_hat_upgrade_policy_mode
-
-  #sku {
-  #  name     = var.vm_red_hat_sku_name
-  #  tier     = var.vm_red_hat_sku_tier
-  #  capacity = var.vm_red_hat_sku_capacity
-  #}
-
-  #storage_profile_image_reference {
-  #  id = data.azurerm_image.image.id
-  #}
-
-  #os_profile {
-  #  computer_name_prefix = var.vm_red_hat_os_computer_name_prefix
-  #  admin_username       = var.vm_red_hat_os_admin_user
-  #  admin_password       = var.vm_red_hat_os_admin_password
-  #}
+  location            = var.vm_red_hat_location
+  size                = var.vm_red_hat_size
+  admin_username      = var.vm_red_hat_admin_username
 
   network_interface_ids = var.vm_red_hat_network_interface_ids
 
-  #network_profile {
-  #  name    = var.vm_red_hat_np_name
-  #  primary = var.vm_red_hat_np_primary
+  admin_ssh_key {
+    username   = var.vm_red_hat_ssh_username
+    public_key = var.vm_red_hat_ssh_public_key
+  }
 
-  #  ip_configuration {
-  #    name                                    = var.vm_red_hat_np_ip_name
-  #    subnet_id                               = var.vm_red_hat_np_ip_subnet_id
-  #    #load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
-  #    primary                                 = var.vm_red_hat_np_ip_primary
-  #  }
-  #}
+  os_disk {
+    caching              = var.vm_red_hat_os_disk_caching
+    storage_account_type = var.vm_red_hat_os_disk_storage_account_type
+  }
 
-  #admin_ssh_key {
-  #  username   = var.vm_red_hat_ssh_username
-  #  public_key = var.vm_red_hat_ssh_public_key
-  #}
-
-  #os_disk {
-  #  caching              = var.vm_red_hat_os_disk_caching
-  #  storage_account_type = var.vm_red_hat_os_disk_storage_account_type
-  #}
-
-  storage_os_disk {
-    name          = var.vm_red_hat_sod_name
-    create_option = var.vm_red_hat_sod_create_option
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "16.04-LTS"
+    version   = "latest"
   }
 
 }

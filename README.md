@@ -41,3 +41,7 @@ terraform init -upgrade
 ```
 terraform apply -destroy -var-file infrastructure/ws.auto.tfvars.json
 ```
+- Ejemplo de creación de una máquina virtual con sistema operativo con hardering.
+```
+terraform apply -destroy -var-file infrastructure/red_hat_vm.auto.tfvars.json
+```

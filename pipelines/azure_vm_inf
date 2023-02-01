@@ -24,7 +24,7 @@ pipeline {
                     properties([
                         parameters([
                             string(
-                                defaultValue: 'pre.auto.tfvars.json', 
+                                defaultValue: 'red_hat_vm.auto.tfvars.json', 
                                 name: 'CONFIG_FILE', 
                                 trim: true,
                                 description: 'Ingrese el nombre del archivo de configuración (debe ser un json válido).',
